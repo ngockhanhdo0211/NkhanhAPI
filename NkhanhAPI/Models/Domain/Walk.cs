@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NkhanhAPI.Models.Domain
 {
     public class Walk
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; } = string.Empty;
@@ -16,11 +15,11 @@ namespace NkhanhAPI.Models.Domain
         public double LengthInKm { get; set; }
 
         // 🔗 FK Difficulty
-        public int DifficultyId { get; set; }
+        public Guid DifficultyId { get; set; }
         public Difficulty Difficulty { get; set; } = null!;
 
         // 🔗 FK Region
-        public int RegionId { get; set; }
+        public Guid RegionId { get; set; }
         public Region Region { get; set; } = null!;
     }
 }
