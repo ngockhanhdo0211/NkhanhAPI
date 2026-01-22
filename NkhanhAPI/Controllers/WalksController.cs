@@ -21,10 +21,17 @@ namespace NkhanhAPI.Controllers
             this.mapper = mapper;
         }
 
+        // =======================
         // POST: /api/walks
+        // =======================
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddWalkRequestDto requestDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var walkDomain = mapper.Map<Walk>(requestDto);
 
             walkDomain = await walkRepository.CreateAsync(walkDomain);
@@ -32,6 +39,81 @@ namespace NkhanhAPI.Controllers
             var walkDto = mapper.Map<WalkDto>(walkDomain);
 
             return Ok(walkDto);
+        }
+
+
+        // =======================
+        // GET: /api/walks
+        // FILTER + SORT
+        // =======================
+        [HttpGet]
+        public async Task<IActionResult> GetAll(
+            [FromQuery] string? filterOn,
+            [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy,
+            [FromQuery] bool isAscending = true)
+        {
+            var walksDomain = await walkRepository.GetAllAsync(
+                filterOn,
+                filterQuery,
+                sortBy,
+                isAscending);
+
+            var walksDto = mapper.Map<List<WalkDto>>(walksDomain);
+
+            return Ok(walksDto);
+        }
+
+        // =======================
+        // GET: /api/walks/{id}
+        // =======================
+        [HttpGet("{id:Guid}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var walkDomain = await walkRepository.GetByIdAsync(id);
+
+            if (walkDomain == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mapper.Map<WalkDto>(walkDomain));
+        }
+
+        // =======================
+        // PUT: /api/walks/{id}
+        // =======================
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> Update(
+            Guid id,
+            [FromBody] UpdateWalkRequestDto requestDto)
+        {
+            var walkDomain = mapper.Map<Walk>(requestDto);
+
+            var updatedWalk = await walkRepository.UpdateAsync(id, walkDomain);
+
+            if (updatedWalk == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mapper.Map<WalkDto>(updatedWalk));
+        }
+
+        // =======================
+        // DELETE: /api/walks/{id}
+        // =======================
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var deletedWalk = await walkRepository.DeleteAsync(id);
+
+            if (deletedWalk == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mapper.Map<WalkDto>(deletedWalk));
         }
     }
 }

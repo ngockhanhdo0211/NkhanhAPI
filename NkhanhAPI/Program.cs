@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NkhanhAPI.Data;
 using NkhanhAPI.Mappings;
 using NkhanhAPI.Repositories;
+using NkhanhAPI.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,6 +33,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionHandlerMiddleware>();
+
 
 app.UseAuthorization();
 

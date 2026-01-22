@@ -35,6 +35,23 @@ namespace NkhanhAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Difficulties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            Name = "Easy"
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
+                            Name = "Hard"
+                        });
                 });
 
             modelBuilder.Entity("NkhanhAPI.Models.Domain.Region", b =>
@@ -54,6 +71,20 @@ namespace NkhanhAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Regions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Code = "HN",
+                            Name = "Ha Noi"
+                        },
+                        new
+                        {
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Code = "HCM",
+                            Name = "Ho Chi Minh"
+                        });
                 });
 
             modelBuilder.Entity("NkhanhAPI.Models.Domain.Walk", b =>
