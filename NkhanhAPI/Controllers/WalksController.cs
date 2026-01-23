@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NkhanhAPI.Models.Domain;
 using NkhanhAPI.Models.DTO;
@@ -46,6 +47,7 @@ namespace NkhanhAPI.Controllers
         // GET: /api/walks
         // FILTER + SORT
         // =======================
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll(
             [FromQuery] string? filterOn,
