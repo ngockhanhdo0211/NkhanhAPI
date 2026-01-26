@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NkhanhAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2bdd67d732f75c22a080f048ecca47106542e43")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6134c8c36de8d6ce8e7870c4fb5ad38d81feb3c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("NkhanhAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NkhanhAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

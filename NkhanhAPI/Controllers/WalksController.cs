@@ -9,6 +9,7 @@ namespace NkhanhAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] // ⚠️ BẮT BUỘC PHẢI LOGIN
     public class WalksController : ControllerBase
     {
         private readonly IWalkRepository walkRepository;
@@ -24,7 +25,9 @@ namespace NkhanhAPI.Controllers
 
         // =======================
         // POST: /api/walks
+        // Writer ONLY
         // =======================
+        [Authorize(Roles = "Writer")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddWalkRequestDto requestDto)
         {
@@ -42,12 +45,11 @@ namespace NkhanhAPI.Controllers
             return Ok(walkDto);
         }
 
-
         // =======================
         // GET: /api/walks
-        // FILTER + SORT
+        // Reader + Writer
         // =======================
-        [Authorize]
+        [Authorize(Roles = "Reader,Writer")]
         [HttpGet]
         public async Task<IActionResult> GetAll(
             [FromQuery] string? filterOn,
@@ -68,7 +70,9 @@ namespace NkhanhAPI.Controllers
 
         // =======================
         // GET: /api/walks/{id}
+        // Reader + Writer
         // =======================
+        [Authorize(Roles = "Reader,Writer")]
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -84,12 +88,19 @@ namespace NkhanhAPI.Controllers
 
         // =======================
         // PUT: /api/walks/{id}
+        // Writer ONLY
         // =======================
+        [Authorize(Roles = "Writer")]
         [HttpPut("{id:Guid}")]
         public async Task<IActionResult> Update(
             Guid id,
             [FromBody] UpdateWalkRequestDto requestDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var walkDomain = mapper.Map<Walk>(requestDto);
 
             var updatedWalk = await walkRepository.UpdateAsync(id, walkDomain);
@@ -104,7 +115,9 @@ namespace NkhanhAPI.Controllers
 
         // =======================
         // DELETE: /api/walks/{id}
+        // Writer ONLY
         // =======================
+        [Authorize(Roles = "Writer")]
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
