@@ -1,3 +1,4 @@
+﻿using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 // DATABASE
 // ======================
 builder.Services.AddDbContext<NkhanhDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("NkhanhConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("NkhanhAPIConnection")));
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AuthConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("NkhanhAuthConnection")));
+
 
 // ======================
 // IDENTITY
@@ -47,12 +51,37 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Nhập: Bearer {JWT token}"
+    });
 
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
 var app = builder.Build();
 
 // ======================
-// SEED ROLES (QUAN TR?NG)
+// SEED ROLES (QUAN TRỌNG)
 // ======================
 using (var scope = app.Services.CreateScope())
 {

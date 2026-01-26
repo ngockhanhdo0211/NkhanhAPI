@@ -13,6 +13,8 @@ C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Castle.Core.dll
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Humanizer.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -152,5 +154,3 @@ C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\refint\NkhanhAPI
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\NkhanhAPI.pdb
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\NkhanhAPI.genruntimeconfig.cache
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\ref\NkhanhAPI.dll
-C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
