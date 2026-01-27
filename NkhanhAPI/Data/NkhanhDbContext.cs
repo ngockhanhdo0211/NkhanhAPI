@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using NkhanhAPI.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 using NkhanhAPI.Models;
 using NkhanhAPI.Models.Domain;
 
@@ -14,6 +15,7 @@ namespace NkhanhAPI.Data
         public DbSet<Region> Regions { get; set; }
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Walk> Walks { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

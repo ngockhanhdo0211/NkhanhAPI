@@ -32,6 +32,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "NkhanhAPI.Controllers.ImagesController",
+    "Method": "Upload",
+    "RelativePath": "api/Images",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "NkhanhAPI.Controllers.RegionsController",
     "Method": "GetAll",
     "RelativePath": "api/Regions",
