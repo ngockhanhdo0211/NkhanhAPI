@@ -30,14 +30,14 @@ namespace NkhanhAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequestDto request)
         {
-            // 1️⃣ Tạo user từ DTO
+            // 1️ Tạo user từ DTO
             var identityUser = new IdentityUser
             {
                 UserName = request.Email,
                 Email = request.Email
             };
 
-            // 2️⃣ Tạo user với password
+            // 2️ Tạo user với password
             var identityResult = await userManager.CreateAsync(
                 identityUser, request.Password);
 
@@ -46,8 +46,8 @@ namespace NkhanhAPI.Controllers
                 return BadRequest(identityResult.Errors);
             }
 
-            // 3️⃣ GÁN ROLE MẶC ĐỊNH (QUAN TRỌNG)
-            // ❌ KHÔNG cho client tự truyền role
+            // 3️ GÁN ROLE MẶC ĐỊNH (QUAN TRỌNG)
+            //  KHÔNG cho client tự truyền role
             await userManager.AddToRoleAsync(identityUser, "Reader");
 
             return Ok(new
@@ -82,10 +82,10 @@ namespace NkhanhAPI.Controllers
                 return BadRequest("Username or password incorrect");
             }
 
-            // 3️⃣ Lấy role của user
+            // 3️   Lấy role của user
             var roles = await userManager.GetRolesAsync(user);
 
-            // 4️⃣ Tạo claims cho JWT
+            // 4️   Tạo claims cho JWT
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email!),
@@ -97,11 +97,11 @@ namespace NkhanhAPI.Controllers
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
-            // 5️⃣ Tạo key ký JWT
+            // 5️ Tạo key ký JWT
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!));
 
-            // 6️⃣ Tạo token
+            // 6️ Tạo token
             var token = new JwtSecurityToken(
                 issuer: configuration["Jwt:Issuer"],
                 audience: configuration["Jwt:Audience"],
@@ -111,7 +111,7 @@ namespace NkhanhAPI.Controllers
                     key, SecurityAlgorithms.HmacSha256)
             );
 
-            // 7️⃣ Trả token cho client
+            // 7️ Trả token cho client
             return Ok(new LoginResponseDto
             {
                 JwtToken = new JwtSecurityTokenHandler().WriteToken(token)

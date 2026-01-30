@@ -24,7 +24,13 @@ namespace NkhanhAPI.Middlewares
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, ex.Message);
+                // 🔥 Log đầy đủ ngữ cảnh
+                logger.LogError(
+                    ex,
+                    "Exception occurred | Method: {Method} | Path: {Path}",
+                    context.Request.Method,
+                    context.Request.Path
+                );
 
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
@@ -32,7 +38,7 @@ namespace NkhanhAPI.Middlewares
                 var response = new
                 {
                     statusCode = context.Response.StatusCode,
-                    message = "Something went wrong. Please try again later."
+                    message = "Đã xảy ra lỗi hệ thống. Vui lòng thử lại sau."
                 };
 
                 await context.Response.WriteAsync(

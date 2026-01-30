@@ -154,3 +154,12 @@ C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\refint\NkhanhAPI
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\NkhanhAPI.pdb
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\NkhanhAPI.genruntimeconfig.cache
 C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\obj\Debug\net8.0\ref\NkhanhAPI.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\Do Ngoc Khanh\tts\NkhanhAPI\NkhanhAPI\bin\Debug\net8.0\Serilog.Sinks.File.dll

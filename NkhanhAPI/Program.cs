@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Serilog;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -6,9 +7,16 @@ using Microsoft.OpenApi.Models;
 using NkhanhAPI.Data;
 using NkhanhAPI.Repositories;
 using System.Text;
-
+using NkhanhAPI.Middlewares;
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File(
+    "Logs/log-.txt",
+    rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Host.UseSerilog();
+Log.Information("NkhanhAPI started successfully");
 // ======================
 // DATABASE
 // ======================
@@ -102,6 +110,7 @@ using (var scope = app.Services.CreateScope())
 // ======================
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();
